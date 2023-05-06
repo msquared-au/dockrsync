@@ -46,6 +46,9 @@ SSH.
 If you put `dockervolume` somewhere in your path, you can drop the "./" from
 the command above.
 
+Note that rsync works in both directions: you can copy files to or from your
+docker volumes, just like you can with regular hosts.
+
 
 ## Limitations
 
