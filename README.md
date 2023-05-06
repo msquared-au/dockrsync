@@ -1,6 +1,6 @@
 # dockrsync
 
-Simple tool to help rsync docker volumes with another host
+Simple tool to help rsync files with docker volumes on another host
 
 
 ## Initial setup
