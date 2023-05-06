@@ -27,6 +27,9 @@ This command will mount `volumename` at `/mnt` in a temporary container on
 This should work for any volume on any docker host that you have access to via
 SSH.
 
+If you put `dockervolume` somewhere in your path, you can drop the "./" from
+the command above.
+
 
 ## Limitations
 
