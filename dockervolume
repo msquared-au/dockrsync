@@ -1,0 +1,39 @@
+#!/bin/bash
+#
+# Create an image called "rsync" on your docker host that includes the rsync
+# command, then you can rsync to and from any volume on that host like so:
+#
+#   rsync -a --rsh=./dockervolume volumename@dockerhost:/mnt/ local/folder
+#
+# This command will mount volumename at /mnt in a temporary container on
+# dockerhost and copy everything to the local folder local/folder
+#
+# The remote path must start with "/mnt/" because that is where the docker
+# volume is mounted inside the temporary container.  Other than that, though,
+# you should be able to do all the usual rsync things.
+#
+# Watch out for spaces in pathnames and such!  This script could break easily
+# and has had virtually no testing done to it.
+
+# check that there is a user (volume) specified
+if [ "$1" != "-l" ] ; then
+	echo "Need volume name (specify as username)"
+	exit 2
+fi
+
+# check that the path starts with /mnt
+PATHARG=${!#}
+if [ "$PATHARG" == "${PATHARG#/mnt/}" ] ; then
+	echo "Path must start with '/mnt'"
+	exit 2
+fi
+
+# grab args
+shift
+VOLUME="$1"
+shift
+
+HOST="$1"
+shift
+
+ssh $HOST docker run -i --rm --volume=$VOLUME:/mnt rsync $@
