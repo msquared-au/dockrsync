@@ -38,7 +38,7 @@ the command above.
 
 * This script assumes you'll be connecting to the docker hosts as the same
   user, or that the user is configured in your SSH config; this is because the
-  username is hijacked
+  username is hijacked to specify the docker volume to be mounted.
 
 * No testing has been done with paths or other arguments that contain spaces;
   most likely, it will break;
