@@ -26,7 +26,8 @@ docker volume on your docker hosts.
   rsync-image folder.
 
 * Clone this repo to somewhere on any hosts that need access
-  to the volumes on your docker host(s).
+  to the volumes on your docker host(s), and place dockervolume
+  in your path on those hosts.
 
 
 ## Usage
