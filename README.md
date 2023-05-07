@@ -7,7 +7,7 @@ Simple tool to help rsync files with docker volumes on another host
 
 Docker manages persistent storage as volumes, but the volumes are only
 "properly" accessible within a docker container.  In theory you could peek
-inter the underlying backing store, but this feels "dirty" somehow.
+into the underlying backing store, but this feels "dirty" somehow.
 
 The usual way to access files in a docker volume seems to be to create a
 temporary container with the volume mounted in it, and access or manipulate the
