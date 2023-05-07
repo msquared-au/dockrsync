@@ -56,7 +56,7 @@ docker volumes, just like you can with regular hosts.
   the volume is mounted and specifies the docker volume to mount.
 
 * No testing has been done with paths or other arguments that contain spaces;
-  most likely, it will break;
+  most likely, it will break.
 
 
 ## Other ideas
