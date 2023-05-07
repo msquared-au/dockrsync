@@ -35,7 +35,7 @@ docker volume on your docker hosts.
 Now, you can rsync anything in any volume on any docker host by using the
 "dockervolume" helper script as the ssh shell, like so:
 ```
-rsync -a --rsh=./dockervolume volumename@dockerhost:/mnt/ local/folder
+rsync -a --rsh=dockervolume volumename@dockerhost:/mnt/ local/folder
 ```
 
 This command will mount `volumename` at `/mnt` in a temporary container on
@@ -43,9 +43,6 @@ This command will mount `volumename` at `/mnt` in a temporary container on
 
 This should work for any volume on any docker host that you have access to via
 SSH.
-
-If you put `dockervolume` somewhere in your path, you can drop the "./" from
-the command above.
 
 Note that rsync works in both directions: you can copy files to or from your
 docker volumes, just like you can with regular hosts.
