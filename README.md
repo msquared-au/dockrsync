@@ -35,11 +35,12 @@ docker volume on your docker hosts.
 Now, you can rsync anything in any volume on any docker host by using the
 "dockervolume" helper script as the ssh shell, like so:
 ```
-rsync -a --rsh=dockervolume volumename@dockerhost:/mnt/ local/folder
+rsync -a --rsh=dockervolume dockerhost:/mnt/volumename/ local/folder
 ```
 
-This command will mount `volumename` at `/mnt` in a temporary container on
-`dockerhost` and copy everything to the local folder `local/folder`.
+This command will mount `volumename` at `/mnt/volumename` in a temporary
+container on `dockerhost` and copy everything to the local folder
+`local/folder`.
 
 This should work for any volume on any docker host that you have access to via
 SSH.
@@ -50,21 +51,14 @@ docker volumes, just like you can with regular hosts.
 
 ## Limitations
 
-* The remote path must always start with "/mnt/", as this corresponds to the
-  mount point in the temporary docker container where the volume is mounted.
-
-* This script assumes you'll be connecting to the docker hosts as the same
-  user, or that the user is configured in your SSH config; this is because the
-  username is hijacked to specify the docker volume to be mounted.
+* The remote path must always start with "/mnt/" and a volume name and "/", as
+  this corresponds to the mount point in the temporary docker container where
+  the volume is mounted and specifies the docker volume to mount.
 
 * No testing has been done with paths or other arguments that contain spaces;
   most likely, it will break;
 
 
 ## Other ideas
-
-To restore support for specifying a user for the remote end, we could allow
-syntax such as user@volume@host: and parse user and volume from the user that's
-supplied to the helper script.
 
 We could make dockrsync a command and have it handle the dockervolume helper.
